@@ -5,94 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <link rel="stylesheet" href="styles/main.css">
 
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-    <title>Melanclica</title>
+    <title>OpenChapter</title>
 </head>
 
 <body>
-    <div class="game-container">
 
-        <div class="enterLeft" id="melancia-container">
+    <h1 class="h1">Visualizador de PDF</h1>
+    <button class="h2" id="invertButton">Ativar Invert</button>
+    <input class="h2" type="file" id="file-input" accept="application/pdf" />
 
-            <div class="center">
-                <p class="h2">Melancias</p>
-                <p class="h1" id="contador"></p>
-            </div>
-
-            <img id="melancia" src="images/melancia.png">
-
-            <div class="extras">
-
-                <div class="tabs">
-                    <button class="tablink h2" id="Tab1">Info</button>
-                    <button class="tablink h2" id="Tab2">Opções</button>
-                    <button class="tablink h2" id="Tab3">Trapaças</button>
-                </div>
-
-                <div id="cTab1" class="tabcontent">
-                    <p class="h1">Sobre Melanclica</p>
-                    <p class="h3">Meu objetivo com esse projeto é aprender JavaScript utilizando módulos e funções mais
-                        complexas comparadas com JS com um backend externo (APIs RESTful, por exemplo), além de
-                        aperfeiçoar meu design com CSS e desenhos básicos. É (super) inspirado em outro jogo de
-                        <i>browser</i>, chamado Cookie Clicker, que por sua vez, é semelhante a outros <i>idle games</i>
-                        como Adventure Capitalist e Clicker Heroes.
-                    </p>
-                    <p class="h2">
-                        Versão 0.9
-                    </p>
-                    <p class="h2">
-                        Desenvolvido por Matheus Della
-                    </p>
-                    <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
-                            class="icon" src="./images/linkedin.svg"></a>
-                    <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon"
-                            src="./images/github.svg"></a>
-                </div>
-
-                <div id="cTab2" class="tabcontent">
-                    <button class="btn" id="reset">Reset</button>
-                </div>
-
-                <div id="cTab3" class="tabcontent">
-                    <button class="btn" id="give100k">+100.000 Melancias</button>
-                    <button class="btn" id="giveAllUpgrades">Receba Todos os Upgrades</button>
-                    <button class="btn" id="giveAllBuildings">+100 de Todas as Buildings</button>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div id="upgrade-container">
-
-            <div class="center">
-                <p class="h2">Melhorias</p>
-                <p class="h1">UPGRADES</p>
-            </div>
-
-            <div id="upgrades"></div>
-
-
-            <div id="boughtUpgrades"></div>
-
-        </div>
-
-        <div class="enterRight" id="building-container">
-
-            <div class="center">
-                <p class="h2">Construções</p>
-                <p class="h1">BUILDINGS</p>
-            </div>
-
-            <div id="buildings"></div>
-
-        </div>
-
+    <div id="navigation-controls">
+        <button class="h2" id="prev-page">Página Anterior</button>
+        <span class="h2">Página: <span id="page-num"></span> / <span id="page-count"></span></span>
+        <button class="h2" id="next-page">Próxima Página</button>
     </div>
 
-    <script type="module" src="scritps/main.js"></script>
+    <canvas id="leftPage"></canvas>
+    <canvas id="rightPage"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>

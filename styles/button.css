@@ -1,0 +1,20 @@
+.btn {
+    border: solid 0.15em var(--exterior);
+    cursor: url(../images/pointer.cur), pointer;
+    color: white;
+    background: var(--exterior);
+    font-family: var(--fontTitle);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.2em;
+    padding: 0.3em 0.8em;
+    margin: 0.25em;
+    transition: .1s ease-out;
+    max-width: fit-content;
+}
+
+.btn:hover,
+.btn:active {
+    background: var(--interior);
+    color: white;
+}
