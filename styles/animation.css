@@ -1,130 +1,33 @@
-@keyframes press {
-
+@keyframes flip {
     0% {
-        transform: scale(0.99);
+        transform: rotateY(0);
+    }
+
+    50% {
+        transform: rotateY(90deg);
     }
 
     100% {
-        transform: scale(1);
+        transform: rotateY(0);
     }
 }
 
-.press {
-    animation: press .1s;
-}
-
-@keyframes floatOut {
-
-    0% {}
-
-    100% {
-        opacity: 0;
-        transform: translateY(-60px);
-    }
-}
-
-.floatOut {
-    animation: floatOut 4s forwards;
+.flip {
+    animation: flip 1s;
 }
 
 @keyframes shiver {
 
     0%,
     100% {
-        transform: rotateZ(6deg);
+        transform: rotateZ(1deg);
     }
 
     50% {
-        transform: rotateZ(-6deg);
+        transform: rotateZ(-1deg);
     }
 }
 
 .shiver {
-    animation: shiver .2s;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotateX(190deg);
-    }
-
-    100% {}
-}
-
-.spin {
-    animation: spin .5s;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-.float {
-    animation: float .5s infinite;
-}
-
-@keyframes flush {
-
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(0) rotate(180deg);
-        opacity: 0;
-    }
-}
-
-.flush {
-    pointer-events: none;
-    animation: flush .5s forwards;
-}
-
-@keyframes enterLeft {
-
-    0% {
-        transform: translateX(-90%);
-    }
-
-    100% {}
-}
-
-.enterLeft {
-    animation: enterLeft 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-@keyframes enterRight {
-
-    0% {
-        transform: translateX(90%);
-    }
-
-    100% {}
-}
-
-.enterRight {
-    animation: enterRight 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-@keyframes appear {
-
-    0% {
-        opacity: 0;
-        transform: scale(.5);
-    }
-
-    100% {}
-}
-
-.appear {
-    animation: appear .5s cubic-bezier(0.175, 0.885, 0.32, 1.175);
+    animation: shiver 1s infinite;
 }

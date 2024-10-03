@@ -13,19 +13,34 @@
 
 <body>
 
-    <h1 class="h1">Visualizador de PDF</h1>
-    <button class="h2" id="invertButton">Ativar Invert</button>
-    <input class="h2" type="file" id="file-input" accept="application/pdf" />
+    <div class="closedbook">
+        <label for="file-input">
 
-    <div id="navigation-controls">
-        <button class="h2" id="prev-page">Página Anterior</button>
-        <span class="h2">Página: <span id="page-num"></span> / <span id="page-count"></span></span>
-        <button class="h2" id="next-page">Próxima Página</button>
+            <p class="h1">OpenChapter</p>
+            <p class="h2">O leitor virtual<br /><br />
+            <p class="btn">Abrir Livro</p><input class="file-input" type="file" id="file-input"
+                accept="application/pdf" /><br /><br /><br /><br />
+            Versão 0.2<br /><br />
+            Desenvolvido por Matheus Della<br /><br />
+
+            <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
+                    class="icon" src="./images/linkedin.svg"></a>
+            <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon" src="./images/github.svg"></a>
+            </p>
+
+        </label>
     </div>
 
-    <canvas id="leftPage"></canvas>
-    <canvas id="rightPage"></canvas>
+    <div class="book">
+        <canvas class="page left" id="leftPageBack"></canvas>
+        <canvas class="page left" id="leftPageFront"></canvas>
+        <canvas class="page right" id="rightPageFront"></canvas>
+        <canvas class="page right" id="rightPageBack"></canvas>
+        <div class="overlay"></div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>
+
+</html>

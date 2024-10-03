@@ -3,11 +3,15 @@ let pdfDoc = null,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = .6, // Escala de zoom
-    canvasLeft = document.getElementById('leftPage'),
-    ctxLeft = canvasLeft.getContext('2d'),
-    canvasRight = document.getElementById('rightPage'),
-    ctxRight = canvasRight.getContext('2d');
+const scale = 0.6; // Escala de zoom
+const canvasLeftBack = document.getElementById('leftPageBack');
+const ctxLeftBack = canvasLeftBack.getContext('2d');
+const canvasLeftFront = document.getElementById('leftPageFront');
+const ctxLeftFront = canvasLeftFront.getContext('2d');
+const canvasRightFront = document.getElementById('rightPageFront');
+const ctxRightFront = canvasRightFront.getContext('2d');
+const canvasRightBack = document.getElementById('rightPageBack');
+const ctxRightBack = canvasRightBack.getContext('2d');
 
 // Função para renderizar uma página no canvas especificado
 const renderSinglePage = (page, canvas, ctx) => {
@@ -27,9 +31,18 @@ const renderSinglePage = (page, canvas, ctx) => {
 const renderPage = (num) => {
     pageIsRendering = true;
 
-    // Renderizar a página atual (esquerda)
+    // RENDER LEFT BACK PAGE
+    if ((num - 1) > 0) {
+        pdfDoc.getPage(num - 1).then(page => {
+            renderSinglePage(page, canvasLeftBack, ctxLeftBack);
+        });
+    } else {
+        ctxLeftBack.clearRect(0, 0, canvasLeftBack.width, canvasLeftBack.height);
+    }
+
+    // RENDER LEFT FRONT PAGE
     pdfDoc.getPage(num).then(page => {
-        renderSinglePage(page, canvasLeft, ctxLeft).then(() => {
+        renderSinglePage(page, canvasLeftFront, ctxLeftFront).then(() => {
             pageIsRendering = false;
 
             if (pageNumIsPending !== null) {
@@ -39,17 +52,24 @@ const renderPage = (num) => {
         });
 
         // Atualiza o número da página atual exibida
-        document.getElementById('page-num').textContent = num + " e " + (num + 1);
     });
 
-    // Renderizar a próxima página (direita), se existir
+    // RENDER RIGHT FRONT PAGE
     if (num < pdfDoc.numPages) {
         pdfDoc.getPage(num + 1).then(page => {
-            renderSinglePage(page, canvasRight, ctxRight);
+            renderSinglePage(page, canvasRightFront, ctxRightFront);
         });
     } else {
-        // Se não houver próxima página, limpar o canvas da direita
-        ctxRight.clearRect(0, 0, canvasRight.width, canvasRight.height);
+        ctxRightFront.clearRect(0, 0, canvasRightFront.width, canvasRightFront.height);
+    }
+
+    // RENDER RIGHT BACK PAGE
+    if ((num + 1) < pdfDoc.numPages) {
+        pdfDoc.getPage(num + 2).then(page => {
+            renderSinglePage(page, canvasRightBack, ctxRightBack);
+        });
+    } else {
+        ctxRightBack.clearRect(0, 0, canvasRightBack.width, canvasRightBack.height);
     }
 };
 
@@ -90,13 +110,15 @@ document.getElementById('file-input').addEventListener('change', (e) => {
         return;
     }
 
+    document.querySelector('.closedbook').style.display = 'none'; // Esconde a closedbook
+    document.querySelector('.book').style.display = 'block'; // Mostra a book
+
     const fileReader = new FileReader();
     fileReader.onload = function () {
         const typedarray = new Uint8Array(this.result);
 
         pdfjsLib.getDocument(typedarray).promise.then(pdfDoc_ => {
             pdfDoc = pdfDoc_;
-            document.getElementById('page-count').textContent = pdfDoc.numPages;
 
             // Renderiza a primeira página
             renderPage(pageNum);
@@ -106,30 +128,10 @@ document.getElementById('file-input').addEventListener('change', (e) => {
     fileReader.readAsArrayBuffer(file);
 });
 
-// Adiciona eventos de navegação
-document.getElementById('prev-page').addEventListener('click', showPrevPage);
-document.getElementById('next-page').addEventListener('click', showNextPage);
-
 const invertButton = document.getElementById('invertButton');
 let isInverted = false;
 
-// Função para alternar o filtro invert
-invertButton.addEventListener('click', () => {
-    if (isInverted) {
-        canvasLeft.style.filter = 'none'; // Remove o filtro
-        canvasRight.style.filter = 'none'; // Remove o filtro
-        invertButton.textContent = 'Ativar Invert';
-    } else {
-        canvasLeft.style.filter = 'invert(1)'; // Aplica o filtro invert
-        canvasRight.style.filter = 'invert(1)'; // Aplica o filtro invert
-        invertButton.textContent = 'Desativar Invert';
-    }
-
-    isInverted = !isInverted; // Alterna o estado de inversão
-});
-
 document.addEventListener('keydown', (event) => {
-
     // Verifica qual tecla foi pressionada
     switch (event.key) {
         case 'ArrowLeft':
@@ -140,3 +142,6 @@ document.addEventListener('keydown', (event) => {
             break;
     }
 });
+
+document.getElementById('leftPageFront').addEventListener('click', showPrevPage);
+document.getElementById('rightPageFront').addEventListener('click', showNextPage);

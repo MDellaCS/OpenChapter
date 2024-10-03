@@ -1,0 +1,19 @@
+.closedbook {
+    display: block;
+
+    margin: 2% 0 5% 0;
+    position: relative;
+    width: 46.5%;
+    height: 130.2vh;
+    background: #502d00;
+    border: .3rem solid #502d00;
+    border-radius: 3px 10px 10px 3px;
+    overflow: hidden;
+    box-shadow: 6px 0 rgb(156, 156, 156), 10px 0 #442700;
+
+    padding: 2rem;
+}
+
+.closedbook:hover input {
+    animation: shiver 2s infinite;
+}

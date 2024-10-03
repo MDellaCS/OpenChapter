@@ -1,8 +1,8 @@
 .btn {
-    border: solid 0.15em var(--exterior);
+    border: solid 0.15em var(--primary);
     cursor: url(../images/pointer.cur), pointer;
     color: white;
-    background: var(--exterior);
+    background: var(--secondary);
     font-family: var(--fontTitle);
     font-size: 1rem;
     font-weight: 500;
@@ -15,6 +15,6 @@
 
 .btn:hover,
 .btn:active {
-    background: var(--interior);
+    background: var(--primary);
     color: white;
 }
