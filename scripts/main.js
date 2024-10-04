@@ -1,17 +1,15 @@
+import { filterInvert } from "./filters.js";
+
 let pdfDoc = null,
     pageNum = 1,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 0.6; // Escala de zoom
-const canvasLeftBack = document.getElementById('leftPageBack');
-const ctxLeftBack = canvasLeftBack.getContext('2d');
-const canvasLeftFront = document.getElementById('leftPageFront');
-const ctxLeftFront = canvasLeftFront.getContext('2d');
-const canvasRightFront = document.getElementById('rightPageFront');
-const ctxRightFront = canvasRightFront.getContext('2d');
-const canvasRightBack = document.getElementById('rightPageBack');
-const ctxRightBack = canvasRightBack.getContext('2d');
+const scale = 1; // Escala de zoom
+const canvasLeft = document.getElementById('leftPage');
+const ctxLeft = canvasLeft.getContext('2d');
+const canvasRight = document.getElementById('rightPage');
+const ctxRight = canvasRight.getContext('2d');
 
 // Função para renderizar uma página no canvas especificado
 const renderSinglePage = (page, canvas, ctx) => {
@@ -27,22 +25,12 @@ const renderSinglePage = (page, canvas, ctx) => {
     return page.render(renderContext).promise;
 };
 
-// Função para renderizar a página atual e a próxima
 const renderPage = (num) => {
     pageIsRendering = true;
 
-    // RENDER LEFT BACK PAGE
-    if ((num - 1) > 0) {
-        pdfDoc.getPage(num - 1).then(page => {
-            renderSinglePage(page, canvasLeftBack, ctxLeftBack);
-        });
-    } else {
-        ctxLeftBack.clearRect(0, 0, canvasLeftBack.width, canvasLeftBack.height);
-    }
-
-    // RENDER LEFT FRONT PAGE
+    // RENDER LEFT PAGE
     pdfDoc.getPage(num).then(page => {
-        renderSinglePage(page, canvasLeftFront, ctxLeftFront).then(() => {
+        renderSinglePage(page, canvasLeft, ctxLeft).then(() => {
             pageIsRendering = false;
 
             if (pageNumIsPending !== null) {
@@ -50,26 +38,15 @@ const renderPage = (num) => {
                 pageNumIsPending = null;
             }
         });
-
-        // Atualiza o número da página atual exibida
     });
 
-    // RENDER RIGHT FRONT PAGE
+    // RENDER RIGHT PAGE
     if (num < pdfDoc.numPages) {
         pdfDoc.getPage(num + 1).then(page => {
-            renderSinglePage(page, canvasRightFront, ctxRightFront);
+            renderSinglePage(page, canvasRight, ctxRight);
         });
     } else {
-        ctxRightFront.clearRect(0, 0, canvasRightFront.width, canvasRightFront.height);
-    }
-
-    // RENDER RIGHT BACK PAGE
-    if ((num + 1) < pdfDoc.numPages) {
-        pdfDoc.getPage(num + 2).then(page => {
-            renderSinglePage(page, canvasRightBack, ctxRightBack);
-        });
-    } else {
-        ctxRightBack.clearRect(0, 0, canvasRightBack.width, canvasRightBack.height);
+        ctxRight.clearRect(0, 0, canvasRight.width, canvasRight.height);
     }
 };
 
@@ -82,22 +59,21 @@ const queueRenderPage = (num) => {
     }
 };
 
-// Mostrar página anterior
 const showPrevPage = () => {
     if (pageNum <= 1) {
         return;
     }
-    pageNum -= 2; // Retrocede duas páginas (uma para a esquerda e outra para a direita)
-    if (pageNum < 1) pageNum = 1; // Garantir que não vá abaixo da página 1
+    pageNum--;
+    if (pageNum < 1) pageNum = 1;
     queueRenderPage(pageNum);
 };
 
-// Mostrar próxima página
 const showNextPage = () => {
+
     if (pageNum >= pdfDoc.numPages) {
         return;
     }
-    pageNum += 2; // Avança duas páginas (uma para a esquerda e outra para a direita)
+    pageNum++;
     queueRenderPage(pageNum);
 };
 
@@ -143,5 +119,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.getElementById('leftPageFront').addEventListener('click', showPrevPage);
-document.getElementById('rightPageFront').addEventListener('click', showNextPage);
+document.getElementById('leftPage').addEventListener('click', showPrevPage);
+document.getElementById('rightPage').addEventListener('click', showNextPage);
+
+document.getElementById('filterInvert').addEventListener('click', filterInvert);
