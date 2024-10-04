@@ -9,7 +9,7 @@
 @import url('input.css');
 @import url('tab.css');
 @import url('tooltip.css');
-@import url('upgrade.css');
+@import url('keybind.css');
 
 @import url('tests\ \(DELETE\ LATER\).css');
 
@@ -31,10 +31,12 @@
     }
 
     :root {
-        --bg: #757575;
+        --primary: #502d00;
+        --secondary: rgb(3, 3, 3);
+        --bg: #ffffff;
         --h1: #ffffff;
         --h2: #bebebe;
-        --h3: #5a5a5a;
+        --h3: #241400;
         --lbl: #ffffff;
         --shadow: #00000022;
     }
@@ -45,6 +47,8 @@
     margin: 0;
     user-select: none;
     box-sizing: border-box;
+
+    transition: .5s ease-out;
 }
 
 *:focus {

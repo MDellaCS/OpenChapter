@@ -1,12 +1,12 @@
 .book {
     display: none;
 
-    margin: 2% 0 5% 0;
+    margin: 4% 0 5% 0;
     position: relative;
     width: 93%;
     height: 130.2vh;
-    background: #502d00;
-    border: .3rem solid #502d00;
+    background: var(--primary);
+    border: .3rem solid var(--primary);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -21,33 +21,19 @@
 }
 
 .page.left {
-    /* box-shadow: inset -70px -30px 80px rgba(0, 0, 0, 0.4); */
     border-radius: 1px 12px 6px 1px;
 }
 
 .page.right {
-    /* box-shadow: inset 70px 30px 80px rgba(0, 0, 0, 0.4); */
     border-radius: 12px 1px 6px 1px;
 }
 
-#leftPageBack {
+#leftPage {
     left: 0;
-    z-index: 1;
 }
 
-#leftPageFront {
-    left: 0;
-    z-index: 2;
-}
-
-#rightPageFront {
+#rightPage {
     right: 0;
-    z-index: 2;
-}
-
-#rightPageBack {
-    right: 0;
-    z-index: 1;
 }
 
 .overlay {
