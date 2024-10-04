@@ -13,34 +13,52 @@
 
 <body>
 
+    <div class="teste">
+        <p onclick="window.location.reload();" class="keybind">F5</p>
+        <p class="h2">para carregar outro arquivo</p>
+        <p onclick="showPrevPage;" class="keybind">&larr;</p>
+        <p class="h2">página anterior</p>
+        <p onclick="showNextPage" class="keybind">&rarr;</p>
+        <p class="h2">próxima página</p>
+        <p id="filterInvert" class="btn">Luzes</p>
+
+        <label for="brightnessSlider">Brilho:</label>
+        <input type="range" id="brightnessSlider" min="50" max="150" value="100">
+    </div>
+
     <div class="closedbook">
         <label for="file-input">
 
             <p class="h1">OpenChapter</p>
-            <p class="h2">O leitor virtual<br /><br />
-            <p class="btn">Abrir Livro</p><input class="file-input" type="file" id="file-input"
-                accept="application/pdf" /><br /><br /><br /><br />
-            Versão 0.2<br /><br />
-            Desenvolvido por Matheus Della<br /><br />
+            <p class="h2">O leitor virtual</p>
+            <br />
+            <br />
+            <p class="btn">Abrir Livro</p>
+            <input class="file-input" type="file" id="file-input" accept="application/pdf" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <p class="h2">Versão 0.2</p>
+            <br />
+            <br />
+            <p class="h2">Desenvolvido por Matheus Della</p>
+            <br />
+            <br />
 
             <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
                     class="icon" src="./images/linkedin.svg"></a>
             <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon" src="./images/github.svg"></a>
-            </p>
 
         </label>
     </div>
 
     <div class="book">
-        <canvas class="page left" id="leftPageBack"></canvas>
-        <canvas class="page left" id="leftPageFront"></canvas>
-        <canvas class="page right" id="rightPageFront"></canvas>
-        <canvas class="page right" id="rightPageBack"></canvas>
+        <canvas class="page left" id="leftPage"></canvas>
+        <canvas class="page right" id="rightPage"></canvas>
         <div class="overlay"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>
-
-</html>
