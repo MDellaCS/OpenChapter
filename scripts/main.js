@@ -1,3 +1,4 @@
+import { animate } from "./animate.js";
 import { filterInvert } from "./filters.js";
 
 let pdfDoc = null,
@@ -10,6 +11,11 @@ const canvasLeft = document.getElementById('leftPage');
 const ctxLeft = canvasLeft.getContext('2d');
 const canvasRight = document.getElementById('rightPage');
 const ctxRight = canvasRight.getContext('2d');
+
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
+const btnReload = document.getElementById('btnReload');
+const topBar = document.getElementById('topBar');
 
 // Função para renderizar uma página no canvas especificado
 const renderSinglePage = (page, canvas, ctx) => {
@@ -63,16 +69,21 @@ const showPrevPage = () => {
     if (pageNum <= 1) {
         return;
     }
+
+    animate("press", 200, btnPrev);
+
     pageNum--;
     if (pageNum < 1) pageNum = 1;
     queueRenderPage(pageNum);
 };
 
 const showNextPage = () => {
-
     if (pageNum >= pdfDoc.numPages) {
         return;
     }
+
+    animate("press", 200, btnNext);
+
     pageNum++;
     queueRenderPage(pageNum);
 };
@@ -104,9 +115,6 @@ document.getElementById('file-input').addEventListener('change', (e) => {
     fileReader.readAsArrayBuffer(file);
 });
 
-const invertButton = document.getElementById('invertButton');
-let isInverted = false;
-
 document.addEventListener('keydown', (event) => {
     // Verifica qual tecla foi pressionada
     switch (event.key) {
@@ -119,7 +127,37 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.getElementById('leftPage').addEventListener('click', showPrevPage);
-document.getElementById('rightPage').addEventListener('click', showNextPage);
+document.getElementById('leftPage').addEventListener('click', () => {
+    showPrevPage();
+});
 
-document.getElementById('filterInvert').addEventListener('click', filterInvert);
+document.getElementById('rightPage').addEventListener('click', () => {
+    showNextPage();
+});
+
+btnPrev.addEventListener('click', () => {
+    showPrevPage();
+});
+
+btnNext.addEventListener('click', () => {
+    showNextPage();
+});
+
+btnReload.addEventListener('click', () => {
+    animate("press", 200, btnReload);
+    window.location.reload();
+});
+
+document.getElementById('filterInvert').addEventListener('click', () => {
+    filterInvert();
+});
+
+
+document.getElementById('toggleTopBar').addEventListener('click', () => {
+    document.getElementById('tete').style.visibility = "visible";
+    animate("exitUp", 0, topBar);
+});
+
+document.getElementById('tete').addEventListener('click', () => {
+    topBar.classList.remove('exitUp');
+});

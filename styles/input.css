@@ -1,3 +1,9 @@
 .file-input {
-    display: none; /* Oculta o input original */
+    display: none;
+    /* Oculta o input original */
+}
+
+input[type="range"] {
+    height: 1rem;
+    width: 20%;  
 }

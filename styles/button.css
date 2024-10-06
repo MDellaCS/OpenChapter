@@ -1,20 +1,22 @@
 .btn {
-    border: solid 0.15em var(--primary);
-    cursor: url(../images/pointer.cur), pointer;
-    color: white;
-    background: var(--secondary);
+    cursor: pointer;
     font-family: var(--fontTitle);
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 0.2em;
-    padding: 0.3em 0.8em;
-    margin: 0.25em;
-    transition: .1s ease-out;
     max-width: fit-content;
+
+    background: var(--primary);
+    height: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary);
+    border: .2em solid var(--h2);
 }
 
-.btn:hover,
-.btn:active {
-    background: var(--primary);
-    color: white;
+.btn:active .btn:hover {
+    animation: press .2s;
 }

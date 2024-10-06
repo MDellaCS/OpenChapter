@@ -1,0 +1,31 @@
+.topBar {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    background: var(--secondary);
+    border-style: solid;
+    border-width: 0 .5rem .5rem .5rem;
+    border-color: var(--h2);
+    border-radius: 1.5rem;
+
+    padding: 5rem .7rem .7rem .7rem;
+    margin: -4.5rem 0 0 0;
+
+    z-index: 5;
+}
+
+.toggleTopBar {
+    cursor: pointer;
+    margin: 0 1rem 0 3rem;
+}
+
+.tete {
+    cursor: pointer;
+    position: absolute;
+    top: 1%;
+    visibility: hidden;
+}

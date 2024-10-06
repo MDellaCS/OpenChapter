@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @import url('animation.css');
+@import url('topBar.css');
 @import url('book.css');
 @import url('closedbook.css');
 @import url('button.css');
@@ -10,8 +11,6 @@
 @import url('tab.css');
 @import url('tooltip.css');
 @import url('keybind.css');
-
-@import url('tests\ \(DELETE\ LATER\).css');
 
 :root {
     --fontTitle: "Roboto Slab";
@@ -31,13 +30,13 @@
     }
 
     :root {
-        --primary: #502d00;
-        --secondary: rgb(3, 3, 3);
-        --bg: #ffffff;
-        --h1: #ffffff;
-        --h2: #bebebe;
+        --primary: #4f3d36;
+        --secondary: #d8c3a5;
+        --bg: #b0a698;
+        --h1: #1e1e24;
+        --h2: #7d6759;
         --h3: #241400;
-        --lbl: #ffffff;
+        --lbl: #1e1e24;
         --shadow: #00000022;
     }
 }

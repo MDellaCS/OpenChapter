@@ -16,17 +16,21 @@ export function filterInvert() {
 
     if (filterInverted) {
         document.documentElement.style.setProperty('--bg', '#000000');
-        document.documentElement.style.setProperty('--primary', '#241400');
+        document.documentElement.style.setProperty('--primary', '#444444');
+        document.documentElement.style.setProperty('--secondary', '#bbbbbb');
+        document.documentElement.style.setProperty('--h2', '#333333');
     } else {
-        document.documentElement.style.setProperty('--bg', '#ffffff');
-        document.documentElement.style.setProperty('--primary', '#502d00');
+        document.documentElement.style.setProperty('--bg', '#b0a698');
+        document.documentElement.style.setProperty('--primary', '#4f3d36');
+        document.documentElement.style.setProperty('--secondary', '#d8c3a5');
+        document.documentElement.style.setProperty('--h2', '#7d6759');
     }
 
 }
 
 const slider = document.getElementById('brightnessSlider');
 
-slider.addEventListener('input', function() {
+slider.addEventListener('input', function () {
     const brightnessValue = slider.value;
     document.body.style.filter = `brightness(${brightnessValue}%)`;
 });
