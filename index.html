@@ -13,18 +13,23 @@
 
 <body>
 
-    <div class="teste">
-        <p onclick="window.location.reload();" class="keybind">F5</p>
-        <p class="h2">para carregar outro arquivo</p>
-        <p onclick="showPrevPage;" class="keybind">&larr;</p>
-        <p class="h2">página anterior</p>
-        <p onclick="showNextPage" class="keybind">&rarr;</p>
-        <p class="h2">próxima página</p>
-        <p id="filterInvert" class="btn">Luzes</p>
+    <div id="topBar" class="topBar slideDown">
+        <p id="btnReload" class="keybind">F5</p>
+        <p class="lbl">carregar outro arquivo</p>
+        <p id="btnPrev" class="keybind">&#129032;</p>
+        <p class="lbl">página anterior</p>
+        <p id="btnNext" class="keybind">&#129034;</p>
+        <p class="lbl">próxima página</p>
+        <p id="filterInvert" class="btn">Modo Escuro</p>
 
-        <label for="brightnessSlider">Brilho:</label>
         <input type="range" id="brightnessSlider" min="50" max="150" value="100">
+        <label for="brightnessSlider" class="lbl">brilho</label>
+
+        <p id="toggleTopBar" class="toggleTopBar">&#11165;</p>
+
     </div>
+
+    <p id="tete" class="tete">&#11167;</p>
 
     <div class="closedbook">
         <label for="file-input">
