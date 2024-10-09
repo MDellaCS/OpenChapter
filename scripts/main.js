@@ -72,7 +72,7 @@ const showPrevPage = () => {
 
     animate("press", 200, btnPrev);
 
-    pageNum--;
+    pageNum -= 2;
     if (pageNum < 1) pageNum = 1;
     queueRenderPage(pageNum);
 };
@@ -84,7 +84,7 @@ const showNextPage = () => {
 
     animate("press", 200, btnNext);
 
-    pageNum++;
+    pageNum += 2;
     queueRenderPage(pageNum);
 };
 
@@ -99,6 +99,8 @@ document.getElementById('file-input').addEventListener('change', (e) => {
 
     document.querySelector('.closedbook').style.display = 'none'; // Esconde a closedbook
     document.querySelector('.book').style.display = 'block'; // Mostra a book
+
+    document.title = "Lendo \"" + file.name.slice(0, -4) + "\" no OpenChapter"; //Slicing ".pdf"
 
     const fileReader = new FileReader();
     fileReader.onload = function () {
@@ -154,10 +156,10 @@ document.getElementById('filterInvert').addEventListener('click', () => {
 
 
 document.getElementById('toggleTopBar').addEventListener('click', () => {
-    document.getElementById('tete').style.visibility = "visible";
+    document.getElementById('showTopBar').style.visibility = "visible";
     animate("exitUp", 0, topBar);
 });
 
-document.getElementById('tete').addEventListener('click', () => {
+document.getElementById('showTopBar').addEventListener('click', () => {
     topBar.classList.remove('exitUp');
 });
