@@ -4,19 +4,22 @@
     max-width: fit-content;
 
     background: var(--primary);
-    height: 2rem;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: .5rem;
     text-align: center;
     border-radius: 6px;
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--secondary);
     border: .2em solid var(--h2);
+
+    display: inline-block;
 }
 
-.btn:active .btn:hover {
+.btn:hover,
+.btn:active {
+    background: var(--h2);
+}
+
+.btn:active {
     animation: press .2s;
 }
