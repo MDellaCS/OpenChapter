@@ -10,4 +10,6 @@
     margin: 0 1rem 10rem 1rem;
 }
 
-.footer {}
+.footer {
+    line-height: 2rem;
+}
