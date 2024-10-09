@@ -11,7 +11,7 @@
     overflow: hidden;
     box-shadow: 6px 0 rgb(156, 156, 156), 10px 0 var(--primary);
 
-    padding: 2rem;
+    padding: 3rem;
 }
 
 .closedbook:hover input {
