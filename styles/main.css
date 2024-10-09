@@ -11,6 +11,8 @@
 @import url('tab.css');
 @import url('tooltip.css');
 @import url('keybind.css');
+@import url('utils.css');
+@import url('spacings.css');
 
 :root {
     --fontTitle: "Roboto Slab";
@@ -18,7 +20,7 @@
 
     --bg: #ffecd6;
     --h1: #ffffff;
-    --h2: #b3b3b3;
+    --h2: #ff0000;
     --h3: #a0a0a0;
     --lbl: #ffffff;
     --shadow: #00000022;
@@ -33,7 +35,7 @@
         --primary: #4f3d36;
         --secondary: #d8c3a5;
         --bg: #b0a698;
-        --h1: #1e1e24;
+        --h1: #ffffff;
         --h2: #7d6759;
         --h3: #241400;
         --lbl: #1e1e24;
@@ -47,7 +49,7 @@
     user-select: none;
     box-sizing: border-box;
 
-    transition: .5s ease-out;
+    transition: .2s ease-out;
 }
 
 *:focus {
