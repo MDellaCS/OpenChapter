@@ -2,44 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @import url('animation.css');
-@import url('topBar.css');
 @import url('book.css');
-@import url('closedbook.css');
 @import url('button.css');
+@import url('closedbook.css');
 @import url('font.css');
 @import url('input.css');
-@import url('tab.css');
-@import url('tooltip.css');
 @import url('keybind.css');
-@import url('utils.css');
 @import url('loader.css');
+@import url('topBar.css');
+@import url('utils.css');
 
 :root {
     --fontTitle: "Roboto Slab";
     --fontText: "Roboto";
 
-    --bg: #ffecd6;
+    --primary: #4f3d36;
+    --secondary: #d8c3a5;
+    --bg: #b0a698;
     --h1: #ffffff;
-    --h2: #ff0000;
-    --h3: #a0a0a0;
-    --lbl: #ffffff;
+    --h2: #7d6759;
+    --h3: #241400;
+    --lbl: #1e1e24;
     --shadow: #00000022;
 }
 
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
-    }
-
-    :root {
-        --primary: #4f3d36;
-        --secondary: #d8c3a5;
-        --bg: #b0a698;
-        --h1: #ffffff;
-        --h2: #7d6759;
-        --h3: #241400;
-        --lbl: #1e1e24;
-        --shadow: #00000022;
     }
 }
 
@@ -58,8 +47,6 @@
 
 body {
     background: var(--bg);
-    background-size: cover;
-    cursor: url(../images/cursor.cur), auto;
 
     display: flex;
     justify-content: center;
@@ -70,14 +57,7 @@ body {
     width: 2rem;
     height: 2rem;
     margin: 0.5rem;
-    filter: invert(100%);
-}
-
-.disabled,
-.disabled:hover {
-    filter: brightness(60%) opacity(60%);
-    transform: scale(0.97);
-    cursor: url(../images/block.cur), not-allowed;
+    filter: invert(1);
 }
 
 .glint-text {
@@ -116,7 +96,7 @@ body {
     height: auto;
     cursor: pointer;
     margin: 0 .5rem;
-    opacity: 0.3;
+    opacity: .3;
 }
 
 .flag.active {
@@ -126,8 +106,4 @@ body {
 
 .flag:hover {
     opacity: 1;
-}
-
-.flag.active:hover {
-    animation: none;
 }

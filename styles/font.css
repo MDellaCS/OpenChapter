@@ -33,13 +33,3 @@
     margin: 0 4rem 0 .3rem;
     display: block;
 }
-
-.error {
-    font-family: var(--fontText);
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.6rem;
-    color: red;
-    margin: 1rem 0 2rem 0;
-}

@@ -8,7 +8,7 @@ let pdfDoc = null,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 1; // Escala de zoom
+const scale = 1;
 const canvasLeft = document.getElementById('leftPage');
 const ctxLeft = canvasLeft.getContext('2d');
 const canvasRight = document.getElementById('rightPage');
@@ -19,7 +19,6 @@ const btnNext = document.getElementById('btnNext');
 const btnReload = document.getElementById('btnReload');
 const topBar = document.getElementById('topBar');
 
-// Função para renderizar uma página no canvas especificado
 const renderSinglePage = (page, canvas, ctx) => {
     const viewport = page.getViewport({ scale });
     canvas.height = viewport.height;
@@ -58,7 +57,6 @@ const renderPage = (num) => {
     }
 };
 
-// Verifica se há uma página pendente a ser renderizada
 const queueRenderPage = (num) => {
     if (pageIsRendering) {
         pageNumIsPending = num;
@@ -90,7 +88,6 @@ const showNextPage = () => {
     queueRenderPage(pageNum);
 };
 
-// Lidar com a seleção do arquivo PDF
 document.getElementById('file-input').addEventListener('change', (e) => {
     const file = e.target.files[0];
 
@@ -99,10 +96,10 @@ document.getElementById('file-input').addEventListener('change', (e) => {
         return;
     }
 
-    document.querySelector('.closedbook').style.display = 'none'; // Esconde a closedbook
-    document.querySelector('.book').style.display = 'block'; // Mostra a book
+    document.querySelector('.closedbook').style.display = 'none';
+    document.querySelector('.book').style.display = 'block';
 
-    document.title = "Lendo \"" + file.name.slice(0, -4) + "\" no OpenChapter"; //Slicing ".pdf"
+    document.title = file.name.slice(0, -4); //Slicing ".pdf"
 
     const fileReader = new FileReader();
     fileReader.onload = function () {
@@ -111,7 +108,6 @@ document.getElementById('file-input').addEventListener('change', (e) => {
         pdfjsLib.getDocument(typedarray).promise.then(pdfDoc_ => {
             pdfDoc = pdfDoc_;
 
-            // Renderiza a primeira página
             renderPage(pageNum);
         });
     };
@@ -120,7 +116,6 @@ document.getElementById('file-input').addEventListener('change', (e) => {
 });
 
 document.addEventListener('keydown', (event) => {
-    // Verifica qual tecla foi pressionada
     switch (event.key) {
         case 'ArrowLeft':
             showPrevPage();
@@ -155,7 +150,6 @@ btnReload.addEventListener('click', () => {
 document.getElementById('filterInvert').addEventListener('click', () => {
     filterInvert();
 });
-
 
 document.getElementById('toggleTopBar').addEventListener('click', () => {
     document.getElementById('showTopBar').style.visibility = "visible";
