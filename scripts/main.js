@@ -1,5 +1,7 @@
 import { animate } from "./animate.js";
 import { filterInvert } from "./filters.js";
+import { applyTranslation } from "./translate.js";
+import { load } from "./load.js";
 
 let pdfDoc = null,
     pageNum = 1,
@@ -163,3 +165,7 @@ document.getElementById('toggleTopBar').addEventListener('click', () => {
 document.getElementById('showTopBar').addEventListener('click', () => {
     topBar.classList.remove('exitUp');
 });
+
+applyTranslation('pt');
+
+load(1500);
