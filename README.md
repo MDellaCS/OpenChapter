@@ -1,2 +1,2 @@
 # OpenChapter
-adicionar descrição
+Leitor de PDFs.
