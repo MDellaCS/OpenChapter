@@ -13,29 +13,40 @@
 
 <body>
 
+    <div id="loader">
+        <p class="glint-text">
+            OpenChapter
+        </p>
+    </div>
+
     <div id="topBar" class="topBar slideDown">
 
         <div>
+            <img id="flag-pt" src="images/brazil.png" alt="Portuguese" class="active flag" data-lang="pt" />
+            <img id="flag-en" src="images/usa.png" alt="English" class="flag" data-lang="en" />
+        </div>
+
+        <div>
             <p id="btnReload" class="keybind">F5</p>
-            <p class="lbl">carregar outro arquivo</p>
+            <p id="txtReload" class="lbl"></p>
         </div>
 
         <div>
             <p id="btnPrev" class="keybind">&#129032;</p>
-            <p class="lbl">página anterior</p>
+            <p id="txtPrev" class="lbl"></p>
         </div>
 
         <div>
             <p id="btnNext" class="keybind">&#129034;</p>
-            <p class="lbl">próxima página</p>
+            <p id="txtNext" class="lbl"></p>
         </div>
 
         <div>
-            <p id="filterInvert" class="btn">Modo Escuro</p>
+            <p id="filterInvert" class="btn"></p>
         </div>
 
         <div class="btn brightness-container">
-            <label for="brightnessSlider">Brilho</label>
+            <label for="brightnessSlider" id="brightSlider"></label>
             <input type="range" id="brightnessSlider" min="50" max="150" value="100" step="10">
         </div>
 
@@ -46,48 +57,31 @@
     <p id="showTopBar">&#11167;</p>
 
     <div class="closedbook">
-        <label for="file-input">
 
-            <div class="title">
-                <p class="h1">OpenChapter</p>
-                <p class="h2">O leitor virtual</p>
+        <div class="title">
+            <p class="h1">OpenChapter</p>
+            <p class="h2" id="subTitle"></p>
+        </div>
+
+        <div class="btnOpenBook centered-div">
+            <label for="file-input" class="btn" id="txtOpenBook"></label>
+            <input class="file-input" type="file" id="file-input" accept="application/pdf" />
+        </div>
+
+        <div class="explanation h3" id="bigText"></div>
+
+        <div class="footer h2">
+            <p id="version"></p>
+            <p id="devBy"></p>
+
+            <div class="centered-div">
+                <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
+                        class="icon" src="./images/linkedin.svg"></a>
+                <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon" src="./images/github.svg"></a>
             </div>
 
-            <div class="btnOpenBook centered-div">
-                <p class="btn">Abrir Livro</p>
-                <input class="file-input" type="file" id="file-input" accept="application/pdf" />
-            </div>
+        </div>
 
-            <div class="explanation h3">
-                Esse site tem como função auxiliar na leitura de arquivos PDF extensos, como livros,
-                publicações acadêmicas (TCCs, Artigos), mangás etc...
-                <br />
-                Ele conta com um modo escuro
-                (que inverte as cores e aplica tons de cinza) e um <i>slider</i> de brilho. Para navegar entre as
-                páginas, é
-                possível
-                clicar nelas ou utilizar as setas do teclado. A barra superior também pode ser ocultada. O projeto
-                foi
-                desenvolvido em HTML, CSS e JavaScript, utilizando a biblioteca PDF.js para trabalhar com os
-                arquivos.
-            </div>
-
-            <div class="footer h2">
-                Versão Beta 0.7
-                <br />
-                Desenvolvido por Matheus Della
-                <br />
-
-                <div class="centered-div">
-                    <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
-                            class="icon" src="./images/linkedin.svg"></a>
-                    <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon"
-                            src="./images/github.svg"></a>
-                </div>
-
-            </div>
-
-        </label>
     </div>
 
     <div class="book">
