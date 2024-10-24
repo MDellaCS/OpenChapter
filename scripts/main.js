@@ -8,7 +8,7 @@ let pdfDoc = null,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 1;
+const scale = 1.5;
 const canvasLeft = document.getElementById('leftPage');
 const ctxLeft = canvasLeft.getContext('2d');
 const canvasRight = document.getElementById('rightPage');
