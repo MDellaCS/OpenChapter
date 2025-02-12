@@ -55,6 +55,26 @@
     </div>
 
     <p id="showTopBar">&#11167;</p>
+<button id="shareButton">Compartilhar</button>
+
+<script>
+document.getElementById('shareButton').addEventListener('click', async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: 'Confira este site!',
+                text: 'Dá uma olhada nesse link, achei interessante!',
+                url: window.location.href
+            });
+            console.log('Compartilhado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao compartilhar:', error);
+        }
+    } else {
+        alert('Seu navegador não suporta compartilhamento nativo.');
+    }
+});
+</script>
 
     <div class="closedbook">
 
